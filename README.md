@@ -5,7 +5,7 @@ SGUserGuide is a framework for programmers to make steps to guide users, every s
 ## A Simple Guide ScreenShot
 You can implement a step just by creating an `SGGuideNode` object and add it to node list.
 <p>
-<img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.png" width = "300" height = "533" alt="WiFi Page" align=center />
+<img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.png" width = "300" height = "533" alt="ScreenShot" align=center />
 </p>
 
 ## How To Get Started
@@ -72,4 +72,12 @@ SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
 [dp reset];
 ```
 
+### Custom Settings
+#### The Color of the mask and the region which allow interactive.
+These properties are in the singleton `SGGuideDispatcher`.
 
+#### The attributes of the messageLabel
+You can access the label in the singleton `SGGuideMaskView`.
+```objective-c
+UILabel *messageLabel = [SGGuideMaskView sharedMask].messageLabel;
+```
