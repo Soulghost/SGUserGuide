@@ -34,7 +34,7 @@ NSString * const kSGGuideDispatcherCur = @"kSGGuideDispatcherCur";
 - (instancetype)init {
     if (self = [super init]) {
         self.holeColor = [UIColor clearColor];
-        self.maskColor = [UIColor colorWithWhite:0.6f alpha:0.8f];
+        self.maskColor = [UIColor colorWithWhite:0.8f alpha:0.8f];
     }
     return self;
 }
