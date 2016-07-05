@@ -41,7 +41,7 @@ A Node has three main properties:<br/>
 **3.message:**: The message showing on the screen to tell uses how to do.
 
 ### Create steps by node array
-Create nodes in an array and pass it to the singleton `SGGuideDispatcher`, if this step trig a switch of the view, it can be handled automatically.
+Create nodes in an array and pass it to the singleton `SGGuideDispatcher`, if this step trig a switch of the view, it can be handled automatically, every node list must have a endNode, it's the end of the guide.
 ```objective-c
 SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
 dp.nodes = @[
@@ -51,4 +51,25 @@ dp.nodes = @[
              [SGGuideNode endNodeWithController:[ThirdViewController class]]
              ];
 ```
+There are three steps, it describes the steps below.
+<p>
+<img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.gif" width = "300" height = "533" alt="WiFi Page" align=center />
+</p>
+**Attention Please: If a step occured without a switch of view, such as click a button on the AlertView, you must handle this step yourself by calling the `next` method in the singleton `SGGuideDispatcher`.**
+```objective-c
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
+        [dp next];
+    }
+}
+```
+
+### Reset guide steps
+The framework will record the steps that has been made using `NSUserDefaults`, you can reset it by calling `reset` method in the singleton `SGGuideDispatcher`.
+```objective-c
+SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
+[dp reset];
+```
+
 
