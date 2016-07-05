@@ -35,8 +35,20 @@ Drag the `SGUserGuide` folder to your project.
 @end
 ```
 
-A Node has three main properties, they are:
-
+A Node has three main properties:<br/>
 **1.controllerClass**: The class of the controller displaying for this step.
-**2.permitViewPath**: The keyPath of the view which is permit to interactive of the controller, for example, if the tableViewController has a subview topView, and the topView has a subview btn, you can pass `topView.btn` to 
+**2.permitViewPath**: The keyPath of the view which is permit to interactive of the controller, for example, if the tableViewController has a subview topView, and the topView has a subview btn, you can pass `topView.btn` to it.
+**3.message:**: The message showing on the screen to tell uses how to do.
+
+### Create steps by node array
+Create nodes in an array and pass it to the singleton `SGGuideDispatcher`, if this step trig a switch of the view, it can be handled automatically.
+```objective-c
+SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
+dp.nodes = @[
+             [SGGuideNode nodeWithController:[FirstViewController class] permitViewPath:@"addBtn" message:@"Please Click The Add Button And Choose Yes From the Alert." reverse:NO],
+             [SGGuideNode nodeWithController:[FirstViewController class] permitViewPath:@"wrap.innerView" message:@"Please Click the Info Button" reverse:NO],
+             [SGGuideNode nodeWithController:[SecondViewController class] permitViewPath:@"tabBarController.tabBar" message:@"Please Change To Third Page" reverse:NO],
+             [SGGuideNode endNodeWithController:[ThirdViewController class]]
+             ];
+```
 
