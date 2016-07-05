@@ -73,7 +73,7 @@ SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
 ```
 
 ### Custom Settings
-#### The Color of the mask and the region which allow interactive.
+#### The color of the mask and the region which allow interactive.
 These properties are in the singleton `SGGuideDispatcher`.
 
 #### The attributes of the messageLabel
