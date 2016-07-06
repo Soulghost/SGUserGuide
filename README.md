@@ -1,13 +1,13 @@
 # SGUserGuide 
 
-# DO NOT USE THIS FRAMEWORK NOW, IT HAS SOME BUGS TO FIX.
-
 SGUserGuide is a framework for programmers to make steps to guide users, every step will restrict users to do a specific operation by adding masks to other regions. The framework can help you implement this without breaking the structure of the project based on AOP and KeyPath.
 
 ## A Simple Guide ScreenShot
 You can implement a step just by creating an `SGGuideNode` object and add it to node list.
 <p>
 <img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.png" width = "300" height = "533" alt="ScreenShot" align=center />
+&nbsp &nbsp
+<img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.gif" width = "300" height = "533" alt="WiFi Page" align=center />
 </p>
 
 ## How To Get Started
@@ -44,31 +44,33 @@ A Node has three main properties:<br/>
 
 ### Create steps by node array
 Create nodes in an array and pass it to the singleton `SGGuideDispatcher`, if this step trig a switch of the view, it can be handled automatically, every node list must have a endNode, it's the end of the guide.
+For example:
 ```objective-c
 SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
 dp.nodes = @[
-             [SGGuideNode nodeWithController:[FirstViewController class] permitViewPath:@"addBtn" message:@"Please Click The Add Button And Choose Yes From the Alert." reverse:NO],
-             [SGGuideNode nodeWithController:[FirstViewController class] permitViewPath:@"wrap.innerView" message:@"Please Click the Info Button" reverse:NO],
-             [SGGuideNode nodeWithController:[SecondViewController class] permitViewPath:@"tabBarController.tabBar" message:@"Please Change To Third Page" reverse:NO],
-             [SGGuideNode endNodeWithController:[ThirdViewController class]]
+             [SGGuideNode nodeWithController:[ESHomeViewController class] permitViewPath:@"tabBarController.tabBar" message:@"Please Choose '公告'(Notice) Item on Bottom Bar" reverse:NO],
+             [SGGuideNode nodeWithController:[SGNoticeTableViewController class] permitViewPath:@"navigationItem.rightBarButtonItem" message:@"Please Click the '发布'(POST) Button" reverse:NO],
+             [SGGuideNode nodeWithController:[SGNoticePublishViewController class] permitViewPath:@"navigationController.navigationBar" message:@"Type anything you like" reverse:YES],
+             [SGGuideNode nodeWithController:[SGNoticePublishViewController class] permitViewPath:@"navigationItem.rightBarButtonItem" message:@"Please Click the '发布'(POST) Button" reverse:NO],
+             [SGGuideNode endNodeWithController:[SGNoticeTableViewController class]]
              ];
 ```
-There are three steps, it describes the steps below.
+There are four steps, it describes the steps below.
 <p>
 <img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.gif" width = "300" height = "533" alt="WiFi Page" align=center />
 </p>
-**Attention Please: If a step occured without a switch of view, such as click a button on the AlertView, you must handle this step yourself by calling the `next` method in the singleton `SGGuideDispatcher`.**
+**Attention Please: If a step occured without a switch of view, such as the 2th(start from 0) step 'Type anything you like' above , you must handle this step yourself by calling the `next` method in the singleton `SGGuideDispatcher`.**<br/>
+**Don't worry about surplus calls of next, the dispatcher will filter them.**
 ```objective-c
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
-        [dp next];
-    }
+- (void)textViewDidChange:(UITextView *)textView {
+    self.publishBtn.enabled = textView.text.length != 0;
+    [[SGGuideDispatcher sharedDispatcher] next];
 }
 ```
 
 ### Reset guide steps
 The framework will record the steps that has been made using `NSUserDefaults`, you can reset it by calling `reset` method in the singleton `SGGuideDispatcher`.
+**You must reset steps before pass node array to the dispatcher**
 ```objective-c
 SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
 [dp reset];
