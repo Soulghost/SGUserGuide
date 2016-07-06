@@ -37,10 +37,11 @@ Drag the `SGUserGuide` folder to your project.
 @end
 ```
 
-A Node has three main properties:<br/>
-**1.controllerClass**: The class of the controller displaying for this step.
-**2.permitViewPath**: The keyPath of the view which is permit to interactive of the controller, for example, if the tableViewController has a subview topView, and the topView has a subview btn, you can pass `topView.btn` to it.
-**3.message:**: The message showing on the screen to tell uses how to do.
+A Node has four main properties:<br/>
+**1.controllerClass**: The class of the controller displaying for this step.<br/>
+**2.permitViewPath**: The keyPath of the view which is permit to interactive of the controller, for example, if the tableViewController has a subview topView, and the topView has a subview btn, you can pass `topView.btn` to it.<br/>
+**3.message**: The message showing on the screen to tell uses how to do.<br/>
+**4.reverse**: Reverse the mask and the allow region.
 
 ### Create steps by node array
 Create nodes in an array and pass it to the singleton `SGGuideDispatcher`, if this step trig a switch of the view, it can be handled automatically, every node list must have a endNode, it's the end of the guide.
