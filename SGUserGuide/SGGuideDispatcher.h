@@ -17,6 +17,7 @@ extern NSString * const SGGuideTrigNotification;
 @property (nonatomic, strong) NSArray<SGGuideNode *> *nodes;
 @property (nonatomic, strong) UIColor *maskColor;
 @property (nonatomic, strong) UIColor *holeColor;
+@property (nonatomic, weak) UIViewController *currentViewController;
 
 + (instancetype)sharedDispatcher;
 - (void)next;

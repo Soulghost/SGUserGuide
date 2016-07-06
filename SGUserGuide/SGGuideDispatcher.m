@@ -16,7 +16,6 @@ NSString * const kSGGuideDispatcherCur = @"kSGGuideDispatcherCur";
 @interface SGGuideDispatcher ()
 
 @property (nonatomic, assign) NSInteger cur;
-@property (nonatomic, weak) UIViewController *currentViewController;
 
 @end
 
@@ -56,9 +55,12 @@ NSString * const kSGGuideDispatcherCur = @"kSGGuideDispatcherCur";
 }
 
 - (void)setNodes:(NSArray<SGGuideNode *> *)nodes {
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:kSGGuideDispatcherCur] == -1) {
+        return;
+    }
     _nodes = nodes;
-    self.cur = [[NSUserDefaults standardUserDefaults] integerForKey:kSGGuideDispatcherCur];
     if (self.cur < nodes.count) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trig:) name:SGGuideTrigNotification object:nil];
     }
 }
@@ -72,15 +74,16 @@ NSString * const kSGGuideDispatcherCur = @"kSGGuideDispatcherCur";
         self.currentViewController = topVc;
         [maskView hide];
         self.cur++;
-        [[NSUserDefaults standardUserDefaults] setInteger:self.cur forKey:kSGGuideDispatcherCur];
-        [[NSUserDefaults standardUserDefaults] synchronize];
         if (node.permitViewPath == nil) {
             [[NSNotificationCenter defaultCenter] removeObserver:self];
+            [[NSUserDefaults standardUserDefaults] setInteger:-1 forKey:kSGGuideDispatcherCur];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             return;
         }
         maskView.node = node;
         [maskView showInViewController:topVc];
     }
+    
 }
 
 - (void)dealloc {

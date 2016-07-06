@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) SGGuideNode *node;
 @property (nonatomic, weak) UILabel *messageLabel;
+@property (nonatomic, assign) CGFloat textMargin;
 
 + (instancetype)sharedMask;
 - (void)showInViewController:(UIViewController *)viewController;

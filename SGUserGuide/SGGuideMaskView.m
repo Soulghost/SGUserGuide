@@ -35,9 +35,15 @@
     if (self = [super initWithFrame:frame]) {
         self.opaque = NO;
         UILabel *messageLabel = [UILabel new];
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.layer.cornerRadius = 4.0f;
+        messageLabel.layer.masksToBounds = YES;
         messageLabel.textColor = [UIColor whiteColor];
         messageLabel.numberOfLines = 0;
+        messageLabel.backgroundColor = [UIColor lightGrayColor];
+        messageLabel.font = [UIFont boldSystemFontOfSize:14];
         self.messageLabel = messageLabel;
+        self.textMargin = 5;
         [self addSubview:messageLabel];
     }
     return self;
@@ -45,7 +51,6 @@
 
 - (void)showInViewController:(UIViewController *)viewController {
     [self hide];
-    self.frame = viewController.view.frame;
     self.permitView = [viewController valueForKeyPath:self.node.permitViewPath];
     self.messageLabel.text = self.node.message;
     if (viewController.tabBarController) {
@@ -55,6 +60,7 @@
     } else {
         [viewController.view addSubview:self];
     }
+    self.frame = self.superview.frame;
     [self setNeedsDisplay];
 }
 
@@ -83,7 +89,26 @@
     }
     [maskColor setFill];
     UIRectFill(rect);
-    self.permitViewFrame = [self.permitView.superview convertRect:self.permitView.frame toView:self];
+    // There are some itmes which are not UIView's subclass
+    if (![self.permitView isKindOfClass:[UIView class]]) {
+        // navigationItem.leftBarButtonItem
+        // navigationItem.rightBarButtonItem
+        NSString *path = self.node.permitViewPath;
+        NSString *itemName = [[path componentsSeparatedByString:@"."] lastObject];
+        CGRect permitRect = CGRectZero;
+        UIViewController *currentVc = [SGGuideDispatcher sharedDispatcher].currentViewController;
+        CGRect navBarFrame = currentVc.navigationController.navigationBar.frame;
+        if ([itemName isEqualToString:@"leftBarButtonItem"]) {
+            permitRect.size = CGSizeMake(navBarFrame.size.width * 0.5f, navBarFrame.size.height);
+            permitRect.origin = navBarFrame.origin;
+        } else if ([itemName isEqualToString:@"rightBarButtonItem"]) {
+            permitRect.size = CGSizeMake(navBarFrame.size.width * 0.5f, navBarFrame.size.height);
+            permitRect.origin = CGPointMake(navBarFrame.size.width * 0.5f, navBarFrame.origin.y);
+        }
+        self.permitViewFrame = permitRect;
+    } else {
+        self.permitViewFrame = [self.permitView convertRect:self.permitView.bounds toView:self];
+    }
     self.permitRect = CGRectIntersection(self.permitViewFrame, rect);
     [holeColor setFill];
     UIRectFill(self.permitRect);
@@ -98,10 +123,10 @@
     CGFloat holeW = self.permitRect.size.width;
     CGFloat holeH = self.permitRect.size.height;
     // choose region
-    NSArray *regions = @[Rect(CGRectMake(0, 0, holeX, holeY)),
-                         Rect(CGRectMake(holeX + holeW, 0, visibleSize.width - holeX - holeW, holeY)),
-                         Rect(CGRectMake(0, holeY + holeH, holeX, visibleSize.height - holeY - holeH)),
-                         Rect(CGRectMake(holeX + holeW, holeY + holeH, visibleSize.width - holeX - holeW, visibleSize.height - holeY - holeH))
+    NSArray *regions = @[Rect(CGRectMake(0, 0, holeX + holeW, holeY)),
+                         Rect(CGRectMake(holeX + holeW, 0, visibleSize.width - holeX, holeY)),
+                         Rect(CGRectMake(0, holeY + holeH, holeX + holeW, visibleSize.height - holeY - holeH)),
+                         Rect(CGRectMake(holeX + holeW, holeY + holeH, visibleSize.width - holeX, visibleSize.height - holeY - holeH))
                          ];
     CGRect labelRect = CGRectZero;
     NSInteger index = 0;
@@ -116,29 +141,29 @@
         }
     }
     CGFloat margin = 5;
-    CGRect labelFrame = [self.messageLabel.text boundingRectWithSize:CGSizeMake(labelRect.size.width - margin, labelRect.size.height - margin) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.messageLabel.font} context:nil];
+    CGSize labelSize = [self.messageLabel.text boundingRectWithSize:CGSizeMake(labelRect.size.width - 2 * margin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.messageLabel.font} context:nil].size;
     CGFloat messageX = 0;
     CGFloat messageY = 0;
     switch (index) {
         case 0:
-            messageX = self.permitRect.origin.x - labelFrame.size.width;
-            messageY = self.permitRect.origin.y - labelFrame.size.height;
+            messageX = self.permitRect.origin.x - labelSize.width;
+            messageY = self.permitRect.origin.y - labelSize.height;
             break;
         case 1:
             messageX = self.permitRect.origin.x;
-            messageY = self.permitRect.origin.y - labelFrame.size.height;
+            messageY = self.permitRect.origin.y - labelSize.height;
             break;
         case 2:
-            messageX = self.permitRect.origin.x - labelFrame.size.width;
+            messageX = self.permitRect.origin.x - labelSize.width;
             messageY = CGRectGetMaxY(self.permitRect);
             break;
         case 3:
-            messageX = CGRectGetMaxX(self.permitRect);
+            messageX = self.permitRect.origin.x;
             messageY = CGRectGetMaxY(self.permitRect);
             break;
     }
-    if (messageX < margin) messageX = margin;
-    self.messageLabel.frame = CGRectMake(messageX, messageY, labelFrame.size.width, labelFrame.size.height);
+    if (messageX < _textMargin + margin) messageX = _textMargin + margin;
+    self.messageLabel.frame = CGRectMake(messageX - _textMargin, messageY - _textMargin, labelSize.width + 2 * _textMargin, labelSize.height + 2 * _textMargin);
 }
 
 @end

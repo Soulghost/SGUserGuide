@@ -26,13 +26,13 @@
 
 - (void)setupGuide {
     SGGuideDispatcher *dp = [SGGuideDispatcher sharedDispatcher];
+    [dp reset];
     dp.nodes = @[
                  [SGGuideNode nodeWithController:[FirstViewController class] permitViewPath:@"addBtn" message:@"Please Click The Add Button And Choose Yes From the Alert." reverse:NO],
                  [SGGuideNode nodeWithController:[FirstViewController class] permitViewPath:@"wrap.innerView" message:@"Please Click the Info Button" reverse:NO],
                  [SGGuideNode nodeWithController:[SecondViewController class] permitViewPath:@"tabBarController.tabBar" message:@"Please Change To Third Page" reverse:NO],
                  [SGGuideNode endNodeWithController:[ThirdViewController class]]
                  ];
-    [dp reset];
 }
 
 @end

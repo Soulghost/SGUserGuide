@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		681B771D1D2B6ECB00840BC7 /* UIViewController+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 681B771C1D2B6ECB00840BC7 /* UIViewController+Tracking.m */; };
-		684D43941D2B5BAC00162079 /* SGGuideNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 684D43931D2B5BAC00162079 /* SGGuideNode.m */; };
-		684D43971D2B5D0300162079 /* SGGuideMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 684D43961D2B5D0300162079 /* SGGuideMaskView.m */; };
-		684D439A1D2B692E00162079 /* SGGuideDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 684D43991D2B692E00162079 /* SGGuideDispatcher.m */; };
+		684F69FB1D2CF010009A4CC0 /* SGGuideDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F69F21D2CF010009A4CC0 /* SGGuideDispatcher.m */; };
+		684F69FC1D2CF010009A4CC0 /* SGGuideMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F69F41D2CF010009A4CC0 /* SGGuideMaskView.m */; };
+		684F69FD1D2CF010009A4CC0 /* SGGuideNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F69F61D2CF010009A4CC0 /* SGGuideNode.m */; };
+		684F69FE1D2CF010009A4CC0 /* UIViewController+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F69F91D2CF010009A4CC0 /* UIViewController+Tracking.m */; };
 		6869620E1D2BAF26004CEA3F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6869620D1D2BAF26004CEA3F /* FirstViewController.m */; };
 		686962111D2BAF34004CEA3F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686962101D2BAF34004CEA3F /* SecondViewController.m */; };
 		686962141D2BB02D004CEA3F /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686962131D2BB02D004CEA3F /* ThirdViewController.m */; };
@@ -39,14 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		681B771B1D2B6ECB00840BC7 /* UIViewController+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Tracking.h"; sourceTree = "<group>"; };
-		681B771C1D2B6ECB00840BC7 /* UIViewController+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Tracking.m"; sourceTree = "<group>"; };
-		684D43921D2B5BAC00162079 /* SGGuideNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuideNode.h; sourceTree = "<group>"; };
-		684D43931D2B5BAC00162079 /* SGGuideNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuideNode.m; sourceTree = "<group>"; };
-		684D43951D2B5D0300162079 /* SGGuideMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuideMaskView.h; sourceTree = "<group>"; };
-		684D43961D2B5D0300162079 /* SGGuideMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuideMaskView.m; sourceTree = "<group>"; };
-		684D43981D2B692E00162079 /* SGGuideDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuideDispatcher.h; sourceTree = "<group>"; };
-		684D43991D2B692E00162079 /* SGGuideDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuideDispatcher.m; sourceTree = "<group>"; };
+		684F69F11D2CF010009A4CC0 /* SGGuideDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuideDispatcher.h; sourceTree = "<group>"; };
+		684F69F21D2CF010009A4CC0 /* SGGuideDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuideDispatcher.m; sourceTree = "<group>"; };
+		684F69F31D2CF010009A4CC0 /* SGGuideMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuideMaskView.h; sourceTree = "<group>"; };
+		684F69F41D2CF010009A4CC0 /* SGGuideMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuideMaskView.m; sourceTree = "<group>"; };
+		684F69F51D2CF010009A4CC0 /* SGGuideNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuideNode.h; sourceTree = "<group>"; };
+		684F69F61D2CF010009A4CC0 /* SGGuideNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuideNode.m; sourceTree = "<group>"; };
+		684F69F81D2CF010009A4CC0 /* UIViewController+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Tracking.h"; sourceTree = "<group>"; };
+		684F69F91D2CF010009A4CC0 /* UIViewController+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Tracking.m"; sourceTree = "<group>"; };
+		684F69FA1D2CF010009A4CC0 /* UserGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGuide.h; sourceTree = "<group>"; };
 		6869620B1D2BAF11004CEA3F /* GuideHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideHeader.h; sourceTree = "<group>"; };
 		6869620C1D2BAF26004CEA3F /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		6869620D1D2BAF26004CEA3F /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
@@ -93,28 +94,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		681B771A1D2B6E7900840BC7 /* Tracking */ = {
+		684F69F01D2CF010009A4CC0 /* SGUserGuide */ = {
 			isa = PBXGroup;
 			children = (
-				681B771B1D2B6ECB00840BC7 /* UIViewController+Tracking.h */,
-				681B771C1D2B6ECB00840BC7 /* UIViewController+Tracking.m */,
-			);
-			path = Tracking;
-			sourceTree = "<group>";
-		};
-		684D43911D2B5B5100162079 /* SGUserGuide */ = {
-			isa = PBXGroup;
-			children = (
-				681B771A1D2B6E7900840BC7 /* Tracking */,
-				684D43921D2B5BAC00162079 /* SGGuideNode.h */,
-				684D43931D2B5BAC00162079 /* SGGuideNode.m */,
-				684D43951D2B5D0300162079 /* SGGuideMaskView.h */,
-				684D43961D2B5D0300162079 /* SGGuideMaskView.m */,
-				684D43981D2B692E00162079 /* SGGuideDispatcher.h */,
-				684D43991D2B692E00162079 /* SGGuideDispatcher.m */,
+				684F69F11D2CF010009A4CC0 /* SGGuideDispatcher.h */,
+				684F69F21D2CF010009A4CC0 /* SGGuideDispatcher.m */,
+				684F69F31D2CF010009A4CC0 /* SGGuideMaskView.h */,
+				684F69F41D2CF010009A4CC0 /* SGGuideMaskView.m */,
+				684F69F51D2CF010009A4CC0 /* SGGuideNode.h */,
+				684F69F61D2CF010009A4CC0 /* SGGuideNode.m */,
+				684F69F71D2CF010009A4CC0 /* Tracking */,
+				684F69FA1D2CF010009A4CC0 /* UserGuide.h */,
 			);
 			name = SGUserGuide;
 			path = ../../SGUserGuide;
+			sourceTree = "<group>";
+		};
+		684F69F71D2CF010009A4CC0 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				684F69F81D2CF010009A4CC0 /* UIViewController+Tracking.h */,
+				684F69F91D2CF010009A4CC0 /* UIViewController+Tracking.m */,
+			);
+			path = Tracking;
 			sourceTree = "<group>";
 		};
 		686962091D2BAEBF004CEA3F /* ExampleViewControllers */ = {
@@ -154,7 +156,7 @@
 		68F95BEB1D2B599E0061C01D /* SGUserGuideDemo */ = {
 			isa = PBXGroup;
 			children = (
-				684D43911D2B5B5100162079 /* SGUserGuide */,
+				684F69F01D2CF010009A4CC0 /* SGUserGuide */,
 				68F95BEF1D2B599E0061C01D /* AppDelegate.h */,
 				68F95BF01D2B599E0061C01D /* AppDelegate.m */,
 				686962091D2BAEBF004CEA3F /* ExampleViewControllers */,
@@ -322,14 +324,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				686962111D2BAF34004CEA3F /* SecondViewController.m in Sources */,
-				684D439A1D2B692E00162079 /* SGGuideDispatcher.m in Sources */,
+				684F69FC1D2CF010009A4CC0 /* SGGuideMaskView.m in Sources */,
+				684F69FB1D2CF010009A4CC0 /* SGGuideDispatcher.m in Sources */,
 				68F95BF11D2B599E0061C01D /* AppDelegate.m in Sources */,
-				684D43941D2B5BAC00162079 /* SGGuideNode.m in Sources */,
 				68F95BEE1D2B599E0061C01D /* main.m in Sources */,
 				686962141D2BB02D004CEA3F /* ThirdViewController.m in Sources */,
-				681B771D1D2B6ECB00840BC7 /* UIViewController+Tracking.m in Sources */,
-				684D43971D2B5D0300162079 /* SGGuideMaskView.m in Sources */,
+				684F69FD1D2CF010009A4CC0 /* SGGuideNode.m in Sources */,
 				6869620E1D2BAF26004CEA3F /* FirstViewController.m in Sources */,
+				684F69FE1D2CF010009A4CC0 /* UIViewController+Tracking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
