@@ -60,8 +60,11 @@ There are four steps, it describes the steps below.
 <p>
 <img src="https://raw.githubusercontent.com/Soulghost/SGUserGuide/master/images/guide.gif" width = "300" height = "533" alt="WiFi Page" align=center />
 </p>
-**Attention Please: If a step occured without a switch of view, such as the 2th(start from 0) step 'Type anything you like' above , you must handle this step yourself by calling the `next` method in the singleton `SGGuideDispatcher`.**<br/>
+
+**Attention Please: If a step occured without a switch of view, such as the 2th(start from 0) step 'Type anything you like' above , you must handle this step yourself by calling the `next` method in the singleton `SGGuideDispatcher`.**
+<br/>
 **Don't worry about surplus calls of next, the dispatcher will filter them.**
+
 ```objective-c
 - (void)textViewDidChange:(UITextView *)textView {
     self.publishBtn.enabled = textView.text.length != 0;
